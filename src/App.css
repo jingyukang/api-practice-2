@@ -4,6 +4,7 @@
 
 .nav {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: cadetblue;
@@ -13,6 +14,7 @@
 
 .nav ul {
   display: flex;
+  margin: 20px;
 }
 
 .nav li {
@@ -25,6 +27,7 @@
 
 .gameList {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -32,8 +35,19 @@
 .gameList li::marker {
   content: none;
 }
+.gameList li {
+  padding: 5px 5px;
+}
 .gameList ul {
+  width: 100%;
   display: flex;
+}
+
+.nbgame ul {
+  display: grid;
+}
+.rchgame ul {
+  display: grid;
 }
 
 #screen {
