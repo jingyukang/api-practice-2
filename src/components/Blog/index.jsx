@@ -10,7 +10,7 @@ import { BrowserRouter, Switch, Link, Route, Redirect } from "react-router-dom";
 import CreatePostForm from "./CreatePostForm";
 import axios from "axios";
 import EachContent from "./EachContent";
-// import useFetch from "../../Hooks/useFetch";
+import { fetchPosts } from "../../api/posts";
 
 export const PostsContext = createContext({
   posts: [],
@@ -33,11 +33,13 @@ const reducer = (state, action) => {
 const Blog = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { posts } = state;
-  // const posts = useFetch("/api/posts");
   // const [posts, setPosts] = useState([]);
   const value = useMemo(() => ({ posts, dispatch }), [posts]);
+  const testValue = fetchPosts();
+  console.log(testValue);
 
   useEffect(() => {
+    // dispatch({ type: "LOADING_DATA", posts: fetchPosts()});
     handleOnClick();
     // axios.get("/api/posts").then((res) => {
     //   setPosts(res.data);
