@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.nav {
+/* .nav {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -23,7 +23,7 @@
 
 .nav li::marker {
   content: none;
-}
+} */
 
 .gameList {
   display: flex;
@@ -43,38 +43,38 @@
   display: flex;
 }
 
-.nbgame ul {
+.gameList .nbgame ul {
   display: grid;
 }
-.rchgame ul {
+.gameList .rcgame ul {
   display: grid;
 }
 
-#screen {
+.gameList #screen {
   width: 300px;
   height: 200px;
   text-align: center;
   user-select: none;
 }
 
-#screen.waiting {
+.gameList #screen.waiting {
   background-color: aqua;
 }
-#screen.ready {
+.gameList #screen.ready {
   background-color: red;
   color: white;
 }
-#screen.now {
+.gameList #screen.now {
   background-color: greenyellow;
 }
 
-#computer {
+.gameList #computer {
   width: 142px;
   height: 200px;
   background-position: 0 0;
 }
 
-.ball {
+.gameList .ball {
   display: inline-block;
   border: 1px solid black;
   border-radius: 20px;
@@ -86,10 +86,10 @@
   margin-right: 20px;
 }
 
-table {
+.gameList table {
   border-collapse: collapse;
 }
-td {
+.gameList td {
   border: 1px solid black;
   width: 60px;
   height: 60px;
@@ -99,5 +99,5 @@ td {
 hr {
   width: 30px;
   size: 2px;
-  color: mediumslateblue;
+  color: #b28900;
 }

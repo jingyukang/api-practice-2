@@ -39,7 +39,7 @@ const HooksResponseCheck = React.memo(() => {
   };
 
   return (
-    <div className="rchgame">
+    <div className="rcgame">
       <h1>Hooks respons check </h1>
       <div id="screen" className={state} onClick={onClickScreen}>
         {message}

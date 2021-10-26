@@ -5,13 +5,13 @@ import GameMatcher from "./GameMatcher";
 
 export const gameList = [
   "Lotto",
-  "Response Check",
+  "ResponseCheck",
   "RPS",
   "Multiplication",
   "Tictactoe",
-  "Word Relay",
-  "Mine Search",
-  "Number Baseball",
+  "WordRelay",
+  "MineSearch",
+  "NumberBaseball",
 ];
 
 const Games = () => {

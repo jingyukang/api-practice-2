@@ -23,7 +23,7 @@ const GameMatcher = () => {
       </div>
     );
   }
-  if (game === "Response Check") {
+  if (game === "ResponseCheck") {
     return (
       <div>
         <ClassResponseCheck />
@@ -53,21 +53,21 @@ const GameMatcher = () => {
       </div>
     );
   }
-  if (game === "Word Relay") {
+  if (game === "WordRelay") {
     return (
       <div>
         <HooksWordRelay />
       </div>
     );
   }
-  if (game === "Mine Search") {
+  if (game === "MineSearch") {
     return (
       <div>
         <MineSearch />
       </div>
     );
   }
-  if (game === "Number Baseball") {
+  if (game === "NumberBaseball") {
     return (
       <div>
         <NumberBaseball />

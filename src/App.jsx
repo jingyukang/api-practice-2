@@ -4,23 +4,23 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import * as React from "react";
 import Games from "./components/Games";
 import Blog from "./components/Blog";
-import { CssBaseline, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import {
+  styled,
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  Box,
+  Typography,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  text: {
-    color: "white",
-    backgroundColor: "black",
-  },
-});
+import { orange } from "@mui/material/colors";
 
 function App() {
-  const classes = useStyles();
-
   return (
     <BrowserRouter>
       <CssBaseline>
-        <div className={classes.text}>
+        <div>
           <Navbar />
           <Switch>
             <Route path="/blog" component={Blog} />

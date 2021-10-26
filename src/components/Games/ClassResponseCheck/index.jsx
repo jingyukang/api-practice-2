@@ -69,7 +69,7 @@ class ClassResponseCheck extends PureComponent {
   render() {
     const { state, message, results } = this.state;
     return (
-      <div className="rchgame">
+      <div className="rcgame">
         <h1>Class Response Check</h1>
         <div id="screen" className={state} onClick={this.onClickScreen}>
           {message}
