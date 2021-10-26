@@ -11,6 +11,7 @@ import CreatePostForm from "./CreatePostForm";
 import axios from "axios";
 import EachContent from "./EachContent";
 import { fetchPosts } from "../../api/posts";
+import { Button } from "@mui/material";
 
 export const PostsContext = createContext({
   posts: [],
@@ -58,10 +59,14 @@ const Blog = () => {
       <PostsContext.Provider value={value}>
         <div className="App">
           <Link to="/blog/write">
-            <button>Write</button>
+            <Button variant="contained" size="small">
+              Write
+            </Button>
           </Link>
           <Link to="/blog">
-            <button onClick={handleOnClick}>List</button>
+            <Button variant="contained" size="small" onClick={handleOnClick}>
+              List
+            </Button>
           </Link>
           <Switch>
             <Route exact path="/blog">

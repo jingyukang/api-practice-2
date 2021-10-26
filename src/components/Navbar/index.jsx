@@ -7,16 +7,11 @@ import {
   Box,
   Toolbar,
   Drawer,
-  Button,
   List,
   Divider,
   ListItem,
-  ListItemIcon,
-  ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 const Navbar = () => {
   const [state, setState] = React.useState({
