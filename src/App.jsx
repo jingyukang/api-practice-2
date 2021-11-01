@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { orange } from "@mui/material/colors";
+import JinPage from "./components/JinPage";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <div>
           <Navbar />
           <Switch>
+            <Route exact path="/" component={JinPage} />
             <Route path="/blog" component={Blog} />
             <Route path="/games" component={Games} />
           </Switch>

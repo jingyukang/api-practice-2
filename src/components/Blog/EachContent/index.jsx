@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import axios from "axios";
 import { PostsContext } from "..";
+import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const EachContent = () => {
   const history = useHistory();
@@ -28,7 +30,14 @@ const EachContent = () => {
           );
         }
       })}
-      <button onClick={del}>Delete</button>
+      <Button
+        variant="outlined"
+        startIcon={<DeleteIcon />}
+        size="small"
+        onClick={del}
+      >
+        Delete
+      </Button>
     </div>
   );
 };

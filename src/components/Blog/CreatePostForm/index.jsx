@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState, useRef, useContext } from "react";
 import { useHistory } from "react-router";
 import { PostsContext } from "..";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const CreatePostForm = React.memo(() => {
   const titleRef = useRef(null);
@@ -25,47 +26,48 @@ const CreatePostForm = React.memo(() => {
   }
 
   return (
-    <div>
+    <Box sx={{ width: "100%" }}>
       {/* <form onSubmit={onSubmit}>
         <input type="text" placeholder="Title" ref={titleRef} />
         <textarea cols="30" rows="10" ref={contentRef} placeholder="Content" />
         <button type="submit">Submit</button>
       </form> */}
       <form onSubmit={onSubmit}>
-        <div>
+        <Box>
           <TextField
             id="standard-basic"
             label="Title"
             variant="standard"
             margin="normal"
-            sx={{ width: "50%" }}
             inputRef={titleRef}
+            sx={{ width: "50%" }}
           />
-        </div>
-        <div>
+        </Box>
+        <Box>
           <TextField
             id="filled-multiline-static"
             label="Contents"
             multiline
-            rows={4}
+            rows={10}
             variant="filled"
             margin="normal"
-            sx={{ width: "50%" }}
             inputRef={contentRef}
+            sx={{ width: "50%" }}
           />
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Button
             type="submit"
             variant="contained"
+            endIcon={<SendIcon />}
             size="small"
             margin="normal"
           >
             Submit
           </Button>
-        </div>
+        </Box>
       </form>
-    </div>
+    </Box>
   );
 });
 

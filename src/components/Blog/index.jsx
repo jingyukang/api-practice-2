@@ -11,7 +11,7 @@ import CreatePostForm from "./CreatePostForm";
 import axios from "axios";
 import EachContent from "./EachContent";
 import { fetchPosts } from "../../api/posts";
-import { Button } from "@mui/material";
+import { Box, Button, List, ListItem } from "@mui/material";
 
 export const PostsContext = createContext({
   posts: [],
@@ -57,28 +57,50 @@ const Blog = () => {
     <BrowserRouter>
       {/* <PostsContext.Provider value={{ posts: posts, dispatch }}> */}
       <PostsContext.Provider value={value}>
-        <div className="App">
-          <Link to="/blog/write">
-            <Button variant="contained" size="small">
+        <Box className="App">
+          <Link to="/blog/write" style={{ textDecoration: "none" }}>
+            <Button variant="outlined" size="small">
               Write
             </Button>
           </Link>
-          <Link to="/blog">
+          <Link to="/blog" style={{ textDecoration: "none" }}>
             <Button variant="contained" size="small" onClick={handleOnClick}>
               List
             </Button>
           </Link>
+
           <Switch>
             <Route exact path="/blog">
-              {posts.map((p, i) => (
-                <Link to={`/blog/${p._id}`}>
-                  <h3>
-                    {i + 1}. {p.title}
-                  </h3>
-                  {new Date(p.published_date).toDateString()}
-                  <hr />
-                </Link>
-              ))}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column-reverse",
+                  alignItems: "center",
+                }}
+              >
+                {posts.map((p, i) => (
+                  <Box sx={{ width: "50%" }}>
+                    <Link
+                      to={`/blog/${p._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          textAlign: "center",
+                        }}
+                      >
+                        <h3 style={{ marginRight: "15px" }}>
+                          {i + 1}. {p.title}
+                        </h3>
+                        {new Date(p.published_date).toDateString()}
+                      </div>
+                    </Link>
+                  </Box>
+                ))}
+              </Box>
             </Route>
             <Route exact path="/blog/write">
               <CreatePostForm />
@@ -87,7 +109,7 @@ const Blog = () => {
               <EachContent posts={posts} />
             </Route>
           </Switch>
-        </div>
+        </Box>
       </PostsContext.Provider>
     </BrowserRouter>
   );
