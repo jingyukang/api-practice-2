@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { PostsContext } from "..";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const EachContent = () => {
   const history = useHistory();
@@ -30,14 +32,30 @@ const EachContent = () => {
           );
         }
       })}
-      <Button
-        variant="outlined"
-        startIcon={<DeleteIcon />}
-        size="small"
-        onClick={del}
-      >
-        Delete
-      </Button>
+      <div>
+        <Button
+          variant="outlined"
+          color="error"
+          startIcon={<DeleteIcon />}
+          size="small"
+          onClick={del}
+        >
+          Delete
+        </Button>
+        <Link
+          to={`/blog/update/${contentId.id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<AddCircleIcon />}
+            size="small"
+          >
+            Update
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

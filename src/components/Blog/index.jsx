@@ -10,6 +10,7 @@ import { BrowserRouter, Switch, Link, Route, Redirect } from "react-router-dom";
 import CreatePostForm from "./CreatePostForm";
 import axios from "axios";
 import EachContent from "./EachContent";
+import UpdatePost from "./UpdatePost";
 import { fetchPosts } from "../../api/posts";
 import { Box, Button, List, ListItem } from "@mui/material";
 
@@ -36,8 +37,8 @@ const Blog = () => {
   const { posts } = state;
   // const [posts, setPosts] = useState([]);
   const value = useMemo(() => ({ posts, dispatch }), [posts]);
-  const testValue = fetchPosts();
-  console.log(testValue);
+  // const testValue = fetchPosts();
+  // console.log(testValue);
 
   useEffect(() => {
     // dispatch({ type: "LOADING_DATA", posts: fetchPosts()});
@@ -105,8 +106,11 @@ const Blog = () => {
             <Route exact path="/blog/write">
               <CreatePostForm />
             </Route>
-            <Route path={`/blog/:id`}>
-              <EachContent posts={posts} />
+            <Route exact path={`/blog/:id`}>
+              <EachContent />
+            </Route>
+            <Route exact path={`/blog/update/:id`}>
+              <UpdatePost />
             </Route>
           </Switch>
         </Box>
