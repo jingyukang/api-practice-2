@@ -104,7 +104,7 @@ const JinPage = () => {
         </div>
         <div className="dsb" style={divStyle}>
           <CVHead head="PERSONAL SUMMARY" />
-          <p style={{ width: "80%" }}>
+          <div style={{ width: "80%" }}>
             I always try to think and act on the basis of principles. I accept
             other people's criticism as a different point of view and try to
             find new ways. I am passionate and eager to learn. Also, I have
@@ -112,7 +112,7 @@ const JinPage = () => {
             apply. Moreover, I try to develop that I have learned and apply it
             to my work to meet our needs. I want to be a good supporter and, I
             want to grow by learning while working.
-          </p>
+          </div>
         </div>
         <div className="dsb" style={divStyle}>
           <CVHead head="EDUCATION" />
