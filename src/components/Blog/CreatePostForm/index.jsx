@@ -3,6 +3,7 @@ import React, { useState, useRef, useContext } from "react";
 import { useHistory } from "react-router";
 import { PostsContext } from "..";
 import { TextField, Button, Box } from "@mui/material";
+import { fetchPosts } from "../../../api/posts";
 import SendIcon from "@mui/icons-material/Send";
 
 const CreatePostForm = React.memo(() => {
@@ -11,16 +12,14 @@ const CreatePostForm = React.memo(() => {
   const history = useHistory();
   const { posts, dispatch } = useContext(PostsContext);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
 
-    axios.post("/api/posts", {
+    await axios.post("/api/posts", {
       title: titleRef.current.value,
       content: contentRef.current.value,
     });
-    axios.get("/api/posts").then((res) => {
-      dispatch({ type: "LOADING_DATA", posts: res.data });
-    });
+    dispatch({ type: "LOADING_DATA", posts: await fetchPosts() });
 
     history.push(`/blog/`);
   }

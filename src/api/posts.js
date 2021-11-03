@@ -21,10 +21,10 @@ export const createPposts = (post) => {
   );
 };
 
-export const updatePost = (post) => {
+export const updatePost = (post, id) => {
   return new Promise((resolve, reject) =>
     axios
-      .put(`/api/posts/${post.id}`, post)
+      .put(`/api/posts/${id}`, post)
       .then((res) => res.data)
       .then((data) => resolve(data))
       .catch((error) => reject(error))
@@ -34,7 +34,7 @@ export const updatePost = (post) => {
 export const deletePost = (id) => {
   return new Promise((resolve, reject) =>
     axios
-      .delete(`/api/postss/${id}`)
+      .delete(`/api/posts/${id}`)
       .then((res) => res.data)
       .then((data) => resolve(data))
       .catch((error) => reject(error))

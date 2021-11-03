@@ -1,29 +1,47 @@
 import axios from "axios";
-import React, { useState, useRef, useContext } from "react";
+import React, { memo, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import { PostsContext } from "..";
 import { TextField, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { fetchPosts, updatePost } from "../../../api/posts";
 
-const UpdatePost = () => {
+const UpdatePost = memo(() => {
   const { posts, dispatch } = useContext(PostsContext);
   const contentId = useParams();
-  const post = posts.find((post) => (post._id === contentId.id ? post : null));
-  const titleRef = useRef(null);
-  const contentRef = useRef(null);
+  const originPost = posts.find((post) =>
+    post._id === contentId.id ? post : null
+  );
+
+  const [postTitle, setPostTitle] = useState("");
+  const [postContent, setPostContent] = useState("");
   const history = useHistory();
 
-  function onSubmit(e) {
-    axios.put(`/api/posts/${contentId.id}`, {
-      title: titleRef.current.value,
-      content: contentRef.current.value,
-    });
-    axios.get("/api/posts").then((res) => {
-      dispatch({ type: "LOADING_DATA", posts: res.data });
-    });
-
+  async function onSubmit(e) {
+    e.preventDefault();
+    const post = {
+      title: postTitle,
+      content: postContent,
+    };
+    await updatePost(post, contentId.id);
+    // await axios.put(`/api/posts/${contentId.id}`, {
+    //   title: titleRef.current.value,
+    //   content: contentRef.current.value,
+    // });
+    await dispatch({ type: "LOADING_DATA", posts: await fetchPosts() });
     history.push(`/blog/`);
   }
+
+  // async function onSubmit(e) {
+  //   e.preventDefault();
+  //   await axios.put(`/api/posts/${contentId.id}`, {
+  //     title: titleRef.current.value,
+  //     content: contentRef.current.value,
+  //   });
+  //   dispatch({ type: "LOADING_DATA", posts: await fetchPosts() });
+
+  //   history.push(`/blog/`);
+  // }
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -33,9 +51,9 @@ const UpdatePost = () => {
             id="standard-basic"
             label="Title"
             variant="standard"
-            defaultValue={post.title}
+            defaultValue={originPost.title}
             margin="normal"
-            inputRef={titleRef}
+            onChange={(e) => setPostTitle(e.target.value)}
             sx={{ width: "50%" }}
           />
         </Box>
@@ -46,9 +64,9 @@ const UpdatePost = () => {
             multiline
             rows={10}
             variant="filled"
-            defaultValue={post.content}
+            defaultValue={originPost.content}
             margin="normal"
-            inputRef={contentRef}
+            onChange={(e) => setPostContent(e.target.value)}
             sx={{ width: "50%" }}
           />
         </Box>
@@ -66,5 +84,5 @@ const UpdatePost = () => {
       </form>
     </Box>
   );
-};
+});
 export default UpdatePost;

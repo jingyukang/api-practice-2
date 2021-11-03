@@ -42,16 +42,21 @@ const Blog = () => {
 
   useEffect(() => {
     // dispatch({ type: "LOADING_DATA", posts: fetchPosts()});
-    handleOnClick();
+    callPosts();
     // axios.get("/api/posts").then((res) => {
     //   setPosts(res.data);
     // });
   }, []);
 
-  async function handleOnClick() {
-    await axios.get("/api/posts").then((res) => {
-      dispatch({ type: "LOADING_DATA", posts: res.data });
-    });
+  async function callPosts() {
+    dispatch({ type: "LOADING_DATA", posts: await fetchPosts() });
+
+    // const test = await fetchPosts();
+    // console.log(test);
+
+    // await axios.get("/api/posts").then((res) => {
+    //   dispatch({ type: "LOADING_DATA", posts: res.data });
+    // });
   }
 
   return (
@@ -65,7 +70,7 @@ const Blog = () => {
             </Button>
           </Link>
           <Link to="/blog" style={{ textDecoration: "none" }}>
-            <Button variant="contained" size="small" onClick={handleOnClick}>
+            <Button variant="contained" size="small" onClick={callPosts}>
               List
             </Button>
           </Link>

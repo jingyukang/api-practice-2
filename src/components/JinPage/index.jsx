@@ -1,17 +1,19 @@
 import React from "react";
 import jin from "../../img/jin.jpg";
+import RefContect from "./RefContect";
+import CVHead from "./CVHead";
 
 const imgStyle = {
   width: "200px",
   borderRadius: 20,
 };
-const divStyle = {
+export const divStyle = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
 };
 
-const paddingRight = {
+export const paddingRight = {
   paddingRight: "5%",
 };
 
@@ -22,6 +24,20 @@ const JinPage = () => {
     email: "jingyukang91@gmail.com",
     visa: "NZ RESIDENCE",
   };
+  const refDetails = [
+    {
+      name: "BEN HUH",
+      position: "Director",
+      company: "Woopa Design Limited",
+      mobile: "021 778 009",
+    },
+    {
+      name: "PETER SON",
+      position: "Lead Developer",
+      company: "Woopa Design Limited",
+      mobile: "021 565 621",
+    },
+  ];
 
   return (
     <div
@@ -31,7 +47,7 @@ const JinPage = () => {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", width: "60%" }}>
-        <div style={divStyle}>
+        <div className="dsb" style={divStyle}>
           <div>
             <img src={jin} alt="jin" style={imgStyle} />
           </div>
@@ -68,26 +84,20 @@ const JinPage = () => {
             </div>
           </div>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>PERSONAL SUMMARY</h3>
-          </div>
-          <div>
-            <p>
-              I always try to think and act on the basis of principles. I accept
-              other people's criticism as a different point of view and try to
-              find new ways. I am passionate and eager to learn. Also, I have
-              quick comprehension that takes less time to learn and quick to
-              apply. Moreover, I try to develop that I have learned and apply it
-              to my work to meet our needs. I want to be a good supporter and, I
-              want to grow by learning while working.
-            </p>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="PERSONAL SUMMARY" />
+          <p style={{ width: "80%" }}>
+            I always try to think and act on the basis of principles. I accept
+            other people's criticism as a different point of view and try to
+            find new ways. I am passionate and eager to learn. Also, I have
+            quick comprehension that takes less time to learn and quick to
+            apply. Moreover, I try to develop that I have learned and apply it
+            to my work to meet our needs. I want to be a good supporter and, I
+            want to grow by learning while working.
+          </p>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>EDUCATION</h3>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="EDUCATION" />
           <div style={{ width: "80%" }}>
             <div style={divStyle}>
               <div style={paddingRight}>
@@ -117,7 +127,6 @@ const JinPage = () => {
                 <h3>2016</h3>
               </div>
             </div>
-
             <div style={divStyle}>
               <div>
                 <p>
@@ -145,10 +154,8 @@ const JinPage = () => {
             </div>
           </div>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>SKILLS</h3>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="SKILLS" />
           <div>
             <h3>FRONTEND</h3>
             <ul>
@@ -167,17 +174,14 @@ const JinPage = () => {
             </ul>
           </div>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>WORK HISTORY</h3>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="WORK HISTORY" />
           <div>
             <p>
               <h3>
                 WEB & APP DEVELOPMENT ASSISTANT – WOOPA DESIGN LTD, AUCKLAND NZ
               </h3>
             </p>
-
             <div>
               <ul>
                 <li>
@@ -193,47 +197,18 @@ const JinPage = () => {
             <h3>2016 - 2017</h3>
           </div>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>LANGUAGE</h3>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="LANGUAGE" />
           <div style={{ width: "50%" }}>
             <h3>KOREAN & ENGLISH</h3>
           </div>
         </div>
-        <div style={divStyle}>
-          <div style={paddingRight}>
-            <h3>REFERENCES</h3>
-          </div>
+        <div className="dsb" style={divStyle}>
+          <CVHead head="REFERENCES" />
           <div style={{ width: "80%" }}>
-            <div style={divStyle}>
-              <div>
-                <div>
-                  <b>BEN HUH</b>
-                </div>
-                <div>Director</div>
-              </div>
-              <div style={{ width: "60%" }}>
-                <div style={divStyle}>
-                  <div>Woopa Design Limited</div>
-                  <div>021 778 009</div>
-                </div>
-              </div>
-            </div>
-            <div style={divStyle}>
-              <div>
-                <div>
-                  <b>PETER SON</b>
-                </div>
-                <div>Lead Developer</div>
-              </div>
-              <div style={{ width: "60%" }}>
-                <div style={divStyle}>
-                  <div>Woopa Design Limited</div>
-                  <div>021 565 621</div>
-                </div>
-              </div>
-            </div>
+            {refDetails.map((p, i) => (
+              <RefContect key={i} p={p} />
+            ))}
           </div>
         </div>
       </div>

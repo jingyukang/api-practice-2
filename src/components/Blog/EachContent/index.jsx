@@ -6,17 +6,19 @@ import { PostsContext } from "..";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { fetchPosts, deletePost } from "../../../api/posts";
 
 const EachContent = () => {
   const history = useHistory();
   const contentId = useParams();
   const { posts, dispatch } = useContext(PostsContext);
 
-  function del() {
-    axios.delete(`/api/posts/${contentId.id}`);
-    axios.get("/api/posts").then((res) => {
-      dispatch({ type: "LOADING_DATA", posts: res.data });
-    });
+  async function del(e) {
+    e.preventDefault();
+    await deletePost(contentId.id);
+    // axios.delete(`/api/posts/${contentId.id}`);
+    dispatch({ type: "LOADING_DATA", posts: await fetchPosts() });
+
     history.push("/blog");
   }
 

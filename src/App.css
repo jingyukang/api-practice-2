@@ -3,6 +3,9 @@
   text-align: center;
   align-items: center;
 }
+.dsb {
+  margin-bottom: 3%;
+}
 
 .gameList {
   display: flex;
