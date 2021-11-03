@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import jin from "../../img/jin.jpg";
 import RefContect from "./RefContect";
 import CVHead from "./CVHead";
+import { Button, Modal } from "@mui/material";
+import CoverLetter from "./CoverLetter";
 
 const imgStyle = {
   width: "200px",
@@ -38,6 +40,9 @@ const JinPage = () => {
       mobile: "021 565 621",
     },
   ];
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div
@@ -81,6 +86,19 @@ const JinPage = () => {
                 <b>Visa</b>
               </div>
               <div style={{ textAlign: "right" }}>{jingyuKang.visa}</div>
+            </div>
+            <div style={{ textAlign: "right" }}>
+              <Button onClick={handleOpen} variant="outlined">
+                Cover Letter
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <CoverLetter />
+              </Modal>
             </div>
           </div>
         </div>
