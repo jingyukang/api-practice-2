@@ -21,7 +21,7 @@ const CoverLetter = () => {
         component="h2"
         align="center"
       >
-        COVER LETTER{" "}
+        COVER LETTER
       </Typography>
 
       <Typography sx={{ mt: 1 }}>Dear Sir or Madam,</Typography>

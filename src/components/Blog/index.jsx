@@ -64,7 +64,7 @@ const Blog = () => {
       {/* <PostsContext.Provider value={{ posts: posts, dispatch }}> */}
       <PostsContext.Provider value={value}>
         <Box className="App">
-          <Link to="/blog/write" style={{ textDecoration: "none" }}>
+          <Link to="/blog/postForm" style={{ textDecoration: "none" }}>
             <Button variant="outlined" size="small">
               Write
             </Button>
@@ -108,7 +108,7 @@ const Blog = () => {
                 ))}
               </Box>
             </Route>
-            <Route exact path="/blog/write">
+            <Route exact path="/blog/postForm">
               <CreatePostForm />
             </Route>
             <Route exact path={`/blog/:id`}>
