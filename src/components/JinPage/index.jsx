@@ -25,7 +25,7 @@ const widthStyle = {
 const JinPage = () => {
   const jingyuKang = {
     name: "JINGYU KANG",
-    mobile: "021 116 9839",
+    mobile: "82)10 2987 7188",
     email: "jingyukang91@gmail.com",
     visa: "NZ RESIDENCE",
   };
